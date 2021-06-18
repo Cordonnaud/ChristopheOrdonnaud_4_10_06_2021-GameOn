@@ -54,6 +54,7 @@ const tournamentLoc6 =  document.getElementById("location6");
 const checkbox1 = document.getElementById("checkbox1");
 const conditionErr = document.getElementById("condition_error");
 const checkbox2 = document.getElementById("checkbox2");
+const confirme = document.getElementById("confirmation");
 
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
 
@@ -155,7 +156,28 @@ function validate() {
 }
 //--#3--------- Ajouter validation ou messages d'erreur #3  ---------
 
-
+//--#4--------- Ajouter confirmation quand envoie réussi #4  ---------
+confirme.addEventListener("click", function conf() {
+  if (first.value &&
+    last.value && 
+    birth.value && 
+    email.value && 
+    tournamentNb && 
+    ((tournamentLoc0.checked) || 
+    (tournamentLoc1.checked) || 
+    (tournamentLoc2.checked) || 
+    (tournamentLoc3.checked) ||
+    (tournamentLoc4.checked) ||
+    (tournamentLoc5.checked) ||
+    (tournamentLoc6.checked)) && 
+    checkbox1.checked === true)
+    {
+      alert("Merci ! Votre réservation a été reçue.");
+  }
+  else{
+    alert("C'est la loose");
+  }
+});
 // //--#2 ---------------------------------------------------------------------------------------
 // // recupere la valeur de formulaire
 // const formulaire = document.getElementById("formulaire"); 
