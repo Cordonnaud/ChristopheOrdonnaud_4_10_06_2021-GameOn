@@ -56,7 +56,16 @@ const conditionErr = document.getElementById("condition_error");
 const checkbox2 = document.getElementById("checkbox2");
 const confirme = document.getElementById("confirmation");
 
+
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
+let q = new Date();
+let m = q.getMonth();
+let d = q.getDay();
+let y = q.getFullYear();
+
+let date = new Date(y,m,d);
+
+mydate=new Date(birth);
 
 
 
@@ -110,8 +119,18 @@ function validate() {
     birthErr.style.color ="black"; 
     event.preventDefault();
   }
+
   else{
     birthErr.textContent ="";
+  }
+  
+  if(date>mydate)
+  {
+    alert("");
+  }
+  else
+  {
+    alert("Documenter une vrai date")
   }
 
   if (tournamentNb.value === ''){
