@@ -55,25 +55,18 @@ const checkbox1 = document.getElementById("checkbox1");
 const conditionErr = document.getElementById("condition_error");
 const checkbox2 = document.getElementById("checkbox2");
 const confirme = document.getElementById("confirmation");
-
+const form = document .getElementById("formulaire");
 
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
-let q = new Date();
-let m = q.getMonth();
-let d = q.getDay();
-let y = q.getFullYear();
-
-let date = new Date(y,m,d);
-
-mydate=new Date(birth);
 
 
-
-function validate() {
-
-  if (first.value === '' || first.value.length<= 2)
+//--#2 ---------------------------------------------------------------------------------------
+form.addEventListener("submit", val);
+function val(){
+  if (first.value === '' || first.value.length < 2)
   {
     alert ("Documentez votre prénom avec 2 lettres minimums");
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     firstErr.textContent =" Veuillez renseigner votre prénom (2 lettres mini !)";
     firstErr.style.fontSize = "12px"; 
     firstErr.style.background ="yellow"; 
@@ -82,11 +75,13 @@ function validate() {
   }
   else{
     firstErr.textContent ="";
+    // Pas de message d'erreur, nombre de caractères suffisant
   }
 
   if (last.value === '' || last.value.length < 2)
   {
     alert ("Documentez votre nom avec 2 lettres minimums"); 
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     lastErr.textContent =" Veuillez renseigner votre nom (2 lettres mini !)";
     lastErr.style.fontSize = "12px"; 
     lastErr.style.background ="yellow"; 
@@ -95,15 +90,17 @@ function validate() {
   }
   else{
     lastErr.textContent ="";
+    // Pas de message d'erreur, nombre de caractères suffisant
   }
   
 
   if(mailCaractere.test(email.value)){
     emailErr.textContent ="";
-    // Pas d'alert, caracteres valides
+    // Pas de message d'erreur, caracteres valides
   }
   else{
     alert ("Documentez une adresse mail valide "); 
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     emailErr.textContent =" Veuillez renseigner votre adresse mail!)";
     emailErr.style.fontSize = "12px"; 
     emailErr.style.background ="yellow"; 
@@ -113,6 +110,7 @@ function validate() {
 
   if (birth.value ===''){
     alert("Documentez votre date de naissance");
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     birthErr.textContent =" Veuillez renseigner votre date de naissance!)";
     birthErr.style.fontSize = "12px"; 
     birthErr.style.background ="yellow"; 
@@ -122,19 +120,12 @@ function validate() {
 
   else{
     birthErr.textContent ="";
-  }
-  
-  if(date>mydate)
-  {
-    alert("");
-  }
-  else
-  {
-    alert("Documenter une vrai date")
+    //  Pas de message d'erreur, une date est renseignée
   }
 
   if (tournamentNb.value === ''){
     alert ("Documentez un nombre de tournois GameOn");
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     tournamentNbErr.textContent =" Veuillez renseigner le nombre de vos participation à un tournois GameOne!)";
     tournamentNbErr.style.fontSize = "12px"; 
     tournamentNbErr.style.background ="yellow"; 
@@ -148,10 +139,11 @@ function validate() {
   if ((tournamentLoc0.checked)|| (tournamentLoc1.checked)|| (tournamentLoc2.checked) || (tournamentLoc3.checked)
     ||(tournamentLoc4.checked) ||(tournamentLoc5.checked) ||(tournamentLoc6.checked)) {
       tournamentLocErr.textContent ="";
-    // pas d'alert, une ville est selectionnée
+    // pas de message d'erreur, une ville est selectionnée
   }
   else{
     alert ("Selectionnez une ville"); 
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     tournamentLocErr.textContent =" Veuillez choisir une ville!)";
     tournamentLocErr.style.fontSize = "12px"; 
     tournamentLocErr.style.background ="yellow"; 
@@ -161,17 +153,18 @@ function validate() {
 
   if(checkbox1.checked){
     conditionErr.textContent ="";
-  //   Pas d'alert, case Condition selectionnée
+  //   Pas de message d'erreur, la case Condition selectionnée
+ 
   }
   else{
     alert("Veuillez accepter les condtions d'utilisation");
+    //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     conditionErr.textContent =" Veuillez vérifier que vous acceptez les termes et conditions.!)";
     conditionErr.style.fontSize = "12px"; 
     conditionErr.style.background ="red"; 
     conditionErr.style.color ="black"; 
     event.preventDefault();
   }
-
 }
 //--#3--------- Ajouter validation ou messages d'erreur #3  ---------
 
@@ -189,7 +182,7 @@ confirme.addEventListener("click", function conf() {
     (tournamentLoc4.checked) ||
     (tournamentLoc5.checked) ||
     (tournamentLoc6.checked)) && 
-    checkbox1.checked === true)
+    checkbox1.checked === true) 
     {
       alert("Merci ! Votre réservation a été reçue.");
   }
@@ -197,30 +190,5 @@ confirme.addEventListener("click", function conf() {
     alert("C'est la loose");
   }
 });
-// //--#2 ---------------------------------------------------------------------------------------
-// // recupere la valeur de formulaire
-// const formulaire = document.getElementById("formulaire"); 
-// //(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
-// // recupere la valeur de firstname
-// const firstname = document.getElementById('first'); 
-// //ecouter événements input de.first
-// firstname.addEventListener("first", verifyFirstname);
-
-// // ecouter l'evenement de formulaire
-// formulaire.addEventListener("submit", function(Event) { 
-//   if(! isValid){ // si formulaire non valide
-//     Event.preventDefault();    // arrete la sousmoussion
-//   }
-//   if (firstname.value === '' || firstname.value.length< 2)
-//   {// si firstname est vide OU <= à 2
-//     alert("Message à afficher");
-//     // Event.preventDefault();
-// }});
 
 
-
-// // fonction de verification des données firstname
-// function verifyFirstname() {
-  
-//   }
-// }
