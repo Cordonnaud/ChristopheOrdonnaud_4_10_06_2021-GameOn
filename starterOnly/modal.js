@@ -183,29 +183,29 @@ function val(){
 // let ybirth = birthday.getFullYear();
 // console.log(dbirth, mdbirth, ybirth);
 
-function valdate(){
-  birth.addEventListener("input", valdate);
-  console.log(input.birth.value);
-  let birthday = new Date(birth.addEventListener("input", valdate));
-  let dbirth = birthday.getDate();
-  let mdbirth = birthday.getMonth() + 1;
-  let ybirth = birthday.getFullYear();
-  console.log(dbirth, mdbirth, ybirth);
-  if( ydate<ybirth && mdate<mbirth && ddate<dbirth){
-    alert("Veuillez modifier la date");
-    birthErr.textContent =" Problème de date !";
-    birthErr.style.fontSize = "12px"; 
-    birthErr.style.background ="blue"; 
-    birthErr.style.color ="white";
-    console.log(dbirth, mdbirth, ybirth); 
-    event.preventDefault();
-}
-else{
-  birthErr.textContent =" ";
-  console.log(dbirth, mdbirth, ybirth);
-  //  Pas de message d'erreur, une date est renseignée
-  }
-}
+// function valdate(){
+//   birth.addEventListener("input", valdate);
+//   console.log(input.birth.value);
+//   let birthday = new Date(birth.addEventListener("input", valdate));
+//   let dbirth = birthday.getDate();
+//   let mdbirth = birthday.getMonth() + 1;
+//   let ybirth = birthday.getFullYear();
+//   console.log(dbirth, mdbirth, ybirth);
+//   if( ydate<ybirth && mdate<mbirth && ddate<dbirth){
+//     alert("Veuillez modifier la date");
+//     birthErr.textContent =" Problème de date !";
+//     birthErr.style.fontSize = "12px"; 
+//     birthErr.style.background ="blue"; 
+//     birthErr.style.color ="white";
+//     console.log(dbirth, mdbirth, ybirth); 
+//     event.preventDefault();
+// }
+// else{
+//   birthErr.textContent =" ";
+//   console.log(dbirth, mdbirth, ybirth);
+//   //  Pas de message d'erreur, une date est renseignée
+//   }
+// }
    
 
 
