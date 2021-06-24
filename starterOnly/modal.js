@@ -62,7 +62,8 @@ const form = document.getElementById("formulaire");
 const data = document.getElementsByClassName("formData");
 const modalBody = document.querySelector(".modal-body");
 const dataForm = document.querySelector(".formData");
-const receive = document.getElementsByClassName("formReceive");
+const dataForm1 = document.querySelector(".formData1");
+
 
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
 
@@ -172,14 +173,21 @@ confirme.addEventListener("click", function conf() {
     (tournamentLoc5.checked) ||
     (tournamentLoc6.checked)) && 
     checkbox1.checked === true) 
-    {
-      
+    { 
+      dataForm1.innerHTML = " ";
       modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
-
+      modalBody.style.height = "600px";
+      modalBody.style.paddingTop = "250px";
+      modalBody.style.paddingLeft = "100px";
+      modalBody.style.paddingRight = "100px";
+      confirme.value = "Fermer";
+      confirme.addEventListener("click", closeModal);
     }
-    else{
-      
-    }})
+  }
+  )
+  
+
+
  
 
 
