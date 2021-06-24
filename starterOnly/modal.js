@@ -56,19 +56,16 @@ const tournamentLoc5 =  document.getElementById("location5");
 const tournamentLoc6 =  document.getElementById("location6");
 const checkbox1 = document.getElementById("checkbox1");
 const conditionErr = document.getElementById("condition_error");
-const checkbox2 = document.getElementById("checkbox2");
 const confirme = document.getElementById("confirmation");
-const form = document.getElementById("formulaire");
-const data = document.getElementsByClassName("formData");
+const formulaire = document.getElementById("formulaire");
 const modalBody = document.querySelector(".modal-body");
-const dataForm = document.querySelector(".formData");
 const dataForm1 = document.querySelector(".formData1");
 
 
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
 
 //--#2 ---------------------------------------------------------------------------------------
-form.addEventListener("submit", val);
+formulaire.addEventListener("submit", val);
 function val(){
   if (first.value === '' || first.value.length < 2){
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
