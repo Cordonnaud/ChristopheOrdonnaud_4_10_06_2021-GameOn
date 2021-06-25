@@ -11,7 +11,6 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const formReceive = document.querySelectorAll(".formReceive");
 
  
 // launch modal event
@@ -57,9 +56,9 @@ const tournamentLoc6 =  document.getElementById("location6");
 const checkbox1 = document.getElementById("checkbox1");
 const conditionErr = document.getElementById("condition_error");
 const confirme = document.getElementById("confirmation");
+const fermer = document.getElementById("fermer");
 const formulaire = document.getElementById("formulaire");
 const modalBody = document.querySelector(".modal-body");
-const dataForm1 = document.querySelector(".formData1");
 
 
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
@@ -157,6 +156,7 @@ function val(){
   
 }
 //--#4--------- Ajouter confirmation quand envoie réussi #4  ---------
+
 confirme.addEventListener("click", function conf() {
   if (first.value &&
     last.value && 
@@ -171,22 +171,14 @@ confirme.addEventListener("click", function conf() {
     (tournamentLoc6.checked)) && 
     checkbox1.checked === true) 
     { 
-      dataForm1.innerHTML = " ";
       modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
       modalBody.style.height = "600px";
       modalBody.style.paddingTop = "250px";
       modalBody.style.paddingLeft = "100px";
       modalBody.style.paddingRight = "100px";
-      confirme.value = "Fermer";
-      confirme.addEventListener("click", closeModal);
+      fermer.style.display = "block";
+      fermer.addEventListener("click", closeModal);
+     
     }
   }
   )
-  
-
-
- 
-
-
-
-
