@@ -20,6 +20,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
 //-------------------   #1 fermer la modale  ------------------------------------
  // recupération du bouton (ici une croix) à actionner
 const closeSelect = document.querySelector(".close"); 
@@ -33,7 +34,7 @@ function closeModal() {
 }
 
 
-//--#2  recupere la valeur de form
+//--#2  recuperation des données du formulaire
 
 const first = document.getElementById("first");
 const firstErr = document.getElementById("first_error");
@@ -60,18 +61,27 @@ const fermer = document.getElementById("fermer");
 const formulaire = document.getElementById("formulaire");
 const modalBody = document.querySelector(".modal-body");
 
-
+// regex email
 let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
 
+
+
 //--#2 ---------------------------------------------------------------------------------------
-formulaire.addEventListener("submit", val);
-function val(){
-  if (first.value === '' || first.value.length < 2){
+
+formulaire.addEventListener("submit", val); // ecoute de l'evenement submit 
+function val(e){
+
+  let today = new Date();// date du jour 
+  let birthday = new Date(birth.value); // date anniv'ersaire'
+  let diffAge = (today.getTime()-birthday.getTime()); // delta en ms date du jour / date anniv'
+  let age = (diffAge / 31536000000); // age en année du joueur
+ 
+
+  if (first.value === '' || first.value.length < 2){ // Caractère absent ou inferieur à 2
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     firstErr.textContent ="Veuillez renseigner votre prénom (2 lettres mini !)";
     firstErr.style.fontSize = "12px"; 
     firstErr.style.color ="red"; 
-    event.preventDefault();
   }
   else{
     firstErr.textContent ="";
@@ -79,12 +89,11 @@ function val(){
 
   }
 
-  if (last.value === '' || last.value.length < 2){
+  if (last.value === '' || last.value.length < 2){ // Caractère absent ou inferieur à 2 
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     lastErr.textContent ="Veuillez renseigner votre nom (2 lettres mini !)";
     lastErr.style.fontSize = "12px"; 
     lastErr.style.color ="red";  
-    event.preventDefault();
   }
   else{
     lastErr.textContent ="";
@@ -92,30 +101,40 @@ function val(){
   
   }
   
-  if(mailCaractere.test(email.value)){
+  if(mailCaractere.test(email.value)){// caractère répondant aux conditions du regex
     emailErr.textContent ="";
     // Pas de message d'erreur, caracteres valides
  
   }
-  else{
+  else{// Caractère absent ou ne répondant pas aux conditions du regex
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     emailErr.textContent ="Veuillez renseigner votre adresse mail!";
     emailErr.style.fontSize = "12px"; 
     emailErr.style.color ="red";
-    event.preventDefault();
   }
 
-  if (birth.value ===''){
+  if (birth.value ===''){// absence de caractère
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
-    birthErr.textContent ="Veuillez renseigner votre date de naissance!";
+    birthErr.textContent ="Veuillez renseigner une date de naissance!";
     birthErr.style.fontSize = "12px"; 
-    birthErr.style.color ="red"; 
-    event.preventDefault();
+    birthErr.style.color ="red";
  
   }
+  else if (diffAge <= "0") {// date supérieure à la date du jour
+    birthErr.textContent ="Veuillez renseigner une date de naissance VALIDE!";
+    birthErr.style.fontSize = "12px"; 
+    birthErr.style.color ="red";
+
+  }
+  else if (age <= 18) { // date anniversaire inferieure à 18 ans
+    birthErr.textContent ="Veuillez renseigner une date de naissance de plus de 18 ans!";
+    birthErr.style.fontSize = "12px"; 
+    birthErr.style.color ="red";
+  }
+  
+
   else{
-    birthErr.textContent =" ";
-    //  Pas de message d'erreur, une date est renseignée
+    birthErr.textContent =" ";//  Pas de message d'erreur, une date est renseignée
   }
 
   if (tournamentNb.value === ''){
@@ -123,7 +142,6 @@ function val(){
     tournamentNbErr.textContent ="Veuillez renseigner le nombre de vos participation à un tournois GameOne!";
     tournamentNbErr.style.fontSize = "12px"; 
     tournamentNbErr.style.color ="red"; 
-    event.preventDefault();
   }
   else{
     tournamentNbErr.textContent ="";
@@ -139,7 +157,6 @@ function val(){
     tournamentLocErr.textContent =" Veuillez choisir une ville!";
     tournamentLocErr.style.fontSize = "12px"; 
     tournamentLocErr.style.color ="red"; 
-    event.preventDefault();
   }
 
   if(checkbox1.checked){
@@ -151,10 +168,11 @@ function val(){
     conditionErr.textContent =" Veuillez vérifier que vous acceptez les termes et conditions!";
     conditionErr.style.fontSize = "12px"; 
     conditionErr.style.color ="red"; 
-    event.preventDefault();
   } 
+  e.preventDefault();
   
 }
+
 //--#4--------- Ajouter confirmation quand envoie réussi #4  ---------
 
 confirme.addEventListener("click", function conf() {
