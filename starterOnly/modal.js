@@ -77,7 +77,7 @@ function val(e){
   let age = (diffAge / 31536000000); // age en année du joueur
  
 
-  if (first.value === '' || first.value.length < 2){ // Caractère absent ou inferieur à 2
+  if (first.value === '' || first.value.length <= 2){ // Caractère absent ou inferieur à 2
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     firstErr.textContent ="Veuillez renseigner votre prénom (2 lettres mini !)";
     firstErr.style.fontSize = "12px"; 
@@ -89,7 +89,7 @@ function val(e){
 
   }
 
-  if (last.value === '' || last.value.length < 2){ // Caractère absent ou inferieur à 2 
+  if (last.value === '' || last.value.length <= 2){ // Caractère absent ou inferieur à 2 
     //--#3------ Ajouter validation ou messages d'erreur #3  ---------
     lastErr.textContent ="Veuillez renseigner votre nom (2 lettres mini !)";
     lastErr.style.fontSize = "12px"; 
