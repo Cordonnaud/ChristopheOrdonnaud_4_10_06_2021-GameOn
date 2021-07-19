@@ -69,12 +69,15 @@ let mailCaractere = /[a-z0-9_\-\.]+@[a-z0-9_\-\.]+\.[a-z]+/i;
 //--#2 ---------------------------------------------------------------------------------------
 
 formulaire.addEventListener("submit", val); // ecoute de l'evenement submit 
+
 function val(e){
 
   let today = new Date();// date du jour 
   let birthday = new Date(birth.value); // date anniv'ersaire'
   let diffAge = (today.getTime()-birthday.getTime()); // delta en ms date du jour / date anniv'
+  let oldDate = (birthday.getTime()-630720000000);
   let age = (diffAge / 31536000000); // age en année du joueur
+  
  
 
   if (first.value === '' || first.value.length <= 2){ // Caractère absent ou inferieur à 2
@@ -122,6 +125,12 @@ function val(e){
   }
   else if (diffAge <= "0") {// date supérieure à la date du jour
     birthErr.textContent ="Veuillez renseigner une date de naissance VALIDE!";
+    birthErr.style.fontSize = "12px"; 
+    birthErr.style.color ="red";
+
+  }
+  else if (oldDate <= "-62072000000") {// date supérieure à la date du jour
+    birthErr.textContent ="Veuillez renseigner une date de naissance plus RECENTE!";
     birthErr.style.fontSize = "12px"; 
     birthErr.style.color ="red";
 
@@ -175,7 +184,7 @@ function val(e){
 
 //--#4--------- Ajouter confirmation quand envoie réussi #4  ---------
 
-confirme.addEventListener("click", function conf() {
+confirme.addEventListener("click", function () {
   if (first.value &&
     last.value && 
     birth.value && 
